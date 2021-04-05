@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,11 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   public controlLogin!: FormGroup;
 
-  constructor(private fb: FormBuilder, public router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -28,22 +33,20 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginProcess() {
+  login() {
     if (!this.controlLogin.valid) {
       this.router.navigate(['/']);
     } else {
-      console.log(this.controlLogin.value);
+      this.authService.login(this.controlLogin.value).subscribe(
+        (res: any) => {
+          console.log(res);
+          localStorage.setItem('token', res.token);
+          this.router.navigate(['/institution']);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     }
-    // } else {
-    //   this.authService.login(this.controlLogin.value).subscribe(
-    //     (res) => {
-    //       console.log(res);
-    //       localStorage.setItem('token', res.token);
-    //       this.router.navigate(['/institution']);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     }
-    //   );
   }
 }

@@ -1,7 +1,7 @@
 .form {
-  position: absolute;
-  left: 400px;
-  top: 100px;
+  position: relative;
+  top: 40px;
+  left: 200px;
 
   display: flex;
   justify-content: center;
@@ -23,11 +23,6 @@
 
     label {
       margin-bottom: 5px;
-    }
-
-    .btn {
-      width: 200px;
-      cursor: pointer;
     }
   }
 }
