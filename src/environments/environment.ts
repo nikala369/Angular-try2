@@ -6,7 +6,7 @@ export const environment = {
   production: true,
 };
 
-export const baseUrl = `https://emisdev.ga/api`;
+export const mainUrl = `https://emisdev.ga/api`;
 
 /*
  * For easier debugging in development mode, you can import the following file

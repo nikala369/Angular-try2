@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./modules/institution/institution.module').then(
-        (mod) => mod.InstitutionModule
+        (inst) => inst.InstitutionModule
       ),
   },
   { path: 'users', component: UserComponent },
