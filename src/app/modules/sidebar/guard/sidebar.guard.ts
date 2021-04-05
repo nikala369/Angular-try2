@@ -1,18 +1,19 @@
-// import { Injectable } from '@angular/core';
-// import { CanActivate, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { AuthService } from '../../auth/services/auth.service';
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// // export class AuthGuard implements CanActivate {
-// //   constructor(private router: Router) {}
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router, private authService: AuthService) {}
 
-// // //   canActivate(): boolean {
-// // //   //   if (this.taskService.loggedIn()) {
-// // //   //     return true;
-// // //   //   } else {
-// // //   //     this.router.navigate(['/login']);
-// // //   //     return false;
-// // //   //   }
-// // //   // }
-// // // }
+  canActivate(): boolean {
+    if (this.authService.loggedIn()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
+  }
+}

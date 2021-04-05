@@ -14,11 +14,11 @@ export class AuthService {
   }
 
   // For Guard <true or false>
-  // loggedIn() {
-  //   return !!localStorage.getItem('token');
-  // }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
 
-  // getToken() {
-  //   return localStorage.getItem('token');
-  // }
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
