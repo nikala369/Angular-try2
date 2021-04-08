@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,15 +11,16 @@ export class AuthService {
 
   // Auth
   login(userInfo: string) {
-    return this.https.post<string>(`${mainUrl}/login`, userInfo);
+    return this.https.post<User>(`${mainUrl}/login`, userInfo);
   }
 
   // For Guard <true or false>
-  // loggedIn() {
-  //   return !!localStorage.getItem('token');
-  // }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
 
-  // getToken() {
-  //   return localStorage.getItem('token');
-  // }
+  // For interceptor
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
