@@ -12,9 +12,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { UserComponent } from './modules/user/page/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InstitutionComponent } from './modules/institution/page/institution/institution.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
+
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, SidebarComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    UserComponent,
+    SidebarComponent,
+    LoginComponent,
+    InstitutionComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    GridModule,
+    ButtonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
