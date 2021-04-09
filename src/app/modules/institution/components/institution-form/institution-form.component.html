@@ -1,1 +1,41 @@
+<section class="institution-form">
+  <form
+    [formGroup]="InstitutionFormTemplate"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+    <label
+      >საიდენტიფიკაციო
+      <input
+        class="form-control inst-input-type"
+        formControlName="identification"
+        type="text"
+        name="identificationCreate"
+        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+      />
+    </label>
 
+    <label
+      >დასახელება*
+      <input
+        class="form-control inst-input-type"
+        name="institutionName"
+        formControlName="name"
+        required
+      />
+    </label>
+    <label
+      >საკონტაქტო ნომერი*
+      <input
+        class="form-control number-field"
+        name="mobile"
+        [mask]="mask"
+        type="number"
+        formControlName="number"
+        [value]="valueNumber"
+        number="00000000"
+        required
+      />
+    </label>
+  </form>
+</section>
