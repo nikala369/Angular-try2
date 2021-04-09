@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { SidebarComponent } from './modules/sidebar/sidebar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IconsModule } from '@progress/kendo-angular-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './modules/auth/login/login.component';
@@ -18,6 +16,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { AuthGuard } from './modules/sidebar/guard/sidebar.guard';
 import { TokenInterceptorService } from './modules/auth/services/token-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './modules/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     IconsModule,
     BrowserAnimationsModule,
     HttpClientModule,

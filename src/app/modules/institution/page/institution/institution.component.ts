@@ -6,7 +6,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { InstitutionService } from '../../services/institution.service';
 
-
 @Component({
   selector: 'app-institution',
   templateUrl: './institution.component.html',
@@ -36,7 +35,7 @@ export class InstitutionComponent implements OnInit {
     this.institutionService.getInstitutionsAll().subscribe((data) => {
       this.gridData = data.data;
       this.institutions = data.data;
-      console.log(data);
+      console.log(data.data);
     });
   }
 
