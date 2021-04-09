@@ -14,6 +14,7 @@ import { InstitutionService } from '../../services/institution.service';
 export class InstitutionComponent implements OnInit {
   public myFormInstitution: FormGroup;
 
+  // GerInstitution
   institutions: any;
   public gridData: any[] = [];
 
