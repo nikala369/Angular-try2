@@ -9,3 +9,9 @@ export interface GetInstitutions {
   number: string;
   pid: string;
 }
+
+export interface CreateInstitution {
+  pid: number;
+  name: string;
+  number: number;
+}

@@ -63,6 +63,10 @@ export class InstitutionComponent implements OnInit {
     }
   }
 
+  createInstitution() {
+    this.router.navigate(['/institution/create']);
+  }
+
   onItemClick(item: any, dataItem: any) {
     if (item === 'რედაქტირება') {
       console.log(item, dataItem);

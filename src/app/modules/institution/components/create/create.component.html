@@ -1,1 +1,10 @@
-
+<app-institution-form> </app-institution-form>
+<button
+  class="btn btn-primary large create-button"
+  [disabled]="institutionFormData.invalid"
+  type="submit"
+  (click)="onSubmit()"
+  id="create-inst"
+>
+  <span class="k-icon k-i-plus"></span> შექმნა
+</button>

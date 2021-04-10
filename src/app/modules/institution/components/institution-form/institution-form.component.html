@@ -1,7 +1,6 @@
 <section class="institution-form">
   <form
-    [formGroup]="InstitutionFormTemplate"
-    (ngSubmit)="onSubmit()"
+    [formGroup]="institutionFormTemplate"
     novalidate
   >
     <label
@@ -29,11 +28,8 @@
       <input
         class="form-control number-field"
         name="mobile"
-        [mask]="mask"
         type="number"
         formControlName="number"
-        [value]="valueNumber"
-        number="00000000"
         required
       />
     </label>
