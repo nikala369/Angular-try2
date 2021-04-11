@@ -9,13 +9,19 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'institution',
+    path: '',
     loadChildren: () =>
       import('./modules/institution/institution.module').then(
         (inst) => inst.InstitutionModule
       ),
   },
-  { path: 'institution/create', component: CreateComponent },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/institution/institution.module').then(
+        (inst) => inst.InstitutionModule
+      ),
+  },
 
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] }, // temporary
   // {path: '**', component: PageNotFound}

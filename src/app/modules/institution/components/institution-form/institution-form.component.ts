@@ -14,6 +14,7 @@ import {
   styleUrls: ['./institution-form.component.scss'],
 })
 export class InstitutionFormComponent implements OnInit {
+  formListener: any;
   constructor(
     public formBuilder: FormBuilder,
     public institutionService: InstitutionService,
@@ -35,6 +36,12 @@ export class InstitutionFormComponent implements OnInit {
   ngOnInit(): void {
     this.institutionService.institutionFormData(
       this.institutionFormTemplate.value
-    );
+      );
+    // this.onChanges();
   }
+  // onChanges(): void {
+  //   this.institutionFormTemplate.valueChanges.subscribe((val) => {
+  //     this.formListener = this.institutionFormTemplate;
+  //   });
+  // }
 }

@@ -5,7 +5,6 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { IconModule } from '@progress/kendo-angular-icons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
-
 @NgModule({
   declarations: [],
   imports: [],
@@ -15,7 +14,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     FormsModule,
     GridModule,
     IconModule,
-    DropDownsModule
+    DropDownsModule,
   ],
 })
 export class SharedModule {}

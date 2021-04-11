@@ -51,6 +51,10 @@ export class InstitutionService {
     );
   }
 
+  getUserById() {
+    
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return throwError(error.message || 'Server Error');
   }
