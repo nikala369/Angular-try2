@@ -64,7 +64,7 @@ export class InstitutionComponent implements OnInit {
   }
 
   createInstitution() {
-    this.router.navigate(['/institution/create']);
+    this.router.navigate(['/institutions/create']);
   }
 
   onItemClick(item: any, dataItem: any) {
@@ -75,7 +75,7 @@ export class InstitutionComponent implements OnInit {
     } else if (item === 'ნახვა') {
       console.log(item, dataItem);
       this.institutionService.branchSubject.next(dataItem);
-      this.router.navigate(['/institutions', dataItem.id, 'created']);
+      this.router.navigate(['/institutions', dataItem.id]);
     }
   }
 }

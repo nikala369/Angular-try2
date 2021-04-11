@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
       .createInstitution(this.institutionFormData)
       .subscribe(
         (data: any) => {
-          this.router.navigate(['/institution']);
+          this.router.navigate(['/institutions']);
           this.createInstitutions = data;
           console.log(data);
         },
@@ -43,3 +43,4 @@ export class CreateComponent implements OnInit {
       );
   }
 }
+

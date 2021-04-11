@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         (res: any) => {
           console.log(res);
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/institution']);
+          this.router.navigate(['/institutions']);
         },
         (err) => {
           console.log(err);
