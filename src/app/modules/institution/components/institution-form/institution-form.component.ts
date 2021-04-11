@@ -14,31 +14,29 @@ import {
   styleUrls: ['./institution-form.component.scss'],
 })
 export class InstitutionFormComponent implements OnInit {
-  formListener: any;
+  institutionFormTemplate: FormGroup;
   constructor(
     public formBuilder: FormBuilder,
     public institutionService: InstitutionService,
     public router: Router
   ) {
-    this.institutionFormTemplate = new FormGroup({
-      identification: new FormControl(''),
-      name: new FormControl('', Validators.required),
-      number: new FormControl('', Validators.required),
+    this.institutionFormTemplate = this.formBuilder.group({
+      identification: ['', Validators.required],
+      name: ['', Validators.required],
+      number: [, Validators.required],
     });
   }
-
-  institutionFormTemplate = this.formBuilder.group({
-    identification: [''],
-    name: [''],
-    number: [],
-  });
 
   ngOnInit(): void {
     this.institutionService.institutionFormData(
       this.institutionFormTemplate.value
-      );
-    // this.onChanges();
+    );
+
+    this.institutionFormTemplate.valueChanges.subscribe((value: any) => {
+      console.log(JSON.stringify(value));
+    });
   }
+
   // onChanges(): void {
   //   this.institutionFormTemplate.valueChanges.subscribe((val) => {
   //     this.formListener = this.institutionFormTemplate;
