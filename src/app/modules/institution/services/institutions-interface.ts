@@ -11,7 +11,7 @@ export interface GetInstitutions {
 }
 
 export interface CreateInstitution {
-  pid: number;
+  pid: string;
   name: string;
-  number: number;
+  number: string;
 }

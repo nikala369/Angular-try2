@@ -79,12 +79,10 @@ export class InstitutionFormComponent implements OnInit {
   }
 
   onCreate() {
-    debugger;
     this.institutionService
       .createInstitution(this.institutionFormTemplate.value)
       .subscribe(
         (data: any) => {
-          debugger;
           console.log(this.institutionFormTemplate.value);
           this.router.navigate(['/institutions']);
           this.createInstitutions = data;

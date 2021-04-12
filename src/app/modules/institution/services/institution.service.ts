@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
-import { GetInstitutions, SearchInstitutions } from './institutions-interface';
+import {
+  CreateInstitution,
+  GetInstitutions,
+  SearchInstitutions,
+} from './institutions-interface';
 import { throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -40,8 +44,11 @@ export class InstitutionService {
       .pipe(catchError(this.errorHandler));
   }
 
-  createInstitution(userData: any) {
-    return this.https.post<any>(`${mainUrl}/institutions/create`, userData);
+  createInstitution(userData: CreateInstitution[]) {
+    return this.https.post<CreateInstitution[]>(
+      `${mainUrl}/institutions/create`,
+      userData
+    );
   }
 
   errorHandler(error: HttpErrorResponse) {
