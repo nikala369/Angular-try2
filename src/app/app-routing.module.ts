@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { CreateComponent } from './modules/institution/components/create/create.component';
 import { AuthGuard } from './modules/sidebar/guard/sidebar.guard';
 import { UserComponent } from './modules/user/page/user/user.component';
 
