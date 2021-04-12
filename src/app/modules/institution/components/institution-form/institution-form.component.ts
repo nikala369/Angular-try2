@@ -20,9 +20,10 @@ export class InstitutionFormComponent implements OnInit {
   intitutionName: any;
   institutionId!: number;
 
-  showCreate = false;
-  showEdit = false;
-  show = false;
+  showCreate: boolean = false;
+  showEdit: boolean = false;
+  show: boolean = false;
+  isDisabled: boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -57,10 +58,11 @@ export class InstitutionFormComponent implements OnInit {
       this.showEdit = true;
     } else if (state == 'show') {
       let id = this.route.snapshot.params.id;
-      this.institutionFormTemplate.value.disabled;
+      this.institutionFormTemplate.value;
 
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
+          this.institutionFormTemplate.disabled;
           this.institutionFormTemplate
             .get('identification')
             ?.setValue(data.pid);
@@ -73,6 +75,7 @@ export class InstitutionFormComponent implements OnInit {
       this.showCreate = false;
       this.showEdit = true;
       this.show = true;
+      this.isDisabled = true;
     } else {
       console.log('oops');
     }

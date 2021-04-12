@@ -4,36 +4,38 @@
   <h1 *ngIf="show">დაწესებულება: {{ intitutionName }}</h1>
 
   <form [formGroup]="institutionFormTemplate" novalidate>
-    <label
-      >საიდენტიფიკაციო
-      <input
-        class="form-control inst-input-type"
-        formControlName="identification"
-        type="text"
-        name="identificationCreate"
-        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-      />
-    </label>
+    <fieldset [disabled]="isDisabled">
+      <label
+        >საიდენტიფიკაციო
+        <input
+          class="form-control inst-input-type"
+          formControlName="identification"
+          type="text"
+          name="identificationCreate"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+        />
+      </label>
 
-    <label
-      >დასახელება*
-      <input
-        class="form-control inst-input-type"
-        name="institutionName"
-        formControlName="name"
-        required
-      />
-    </label>
-    <label
-      >საკონტაქტო ნომერი*
-      <input
-        class="form-control number-field"
-        name="mobile"
-        type="text"
-        formControlName="number"
-        required
-      />
-    </label>
+      <label
+        >დასახელება*
+        <input
+          class="form-control inst-input-type"
+          name="institutionName"
+          formControlName="name"
+          required
+        />
+      </label>
+      <label
+        >საკონტაქტო ნომერი*
+        <input
+          class="form-control number-field"
+          name="mobile"
+          type="text"
+          formControlName="number"
+          required
+        />
+      </label>
+    </fieldset>
   </form>
 
   <div *ngIf="showCreate">
@@ -69,6 +71,4 @@
   >
     <span class="k-icon k-i-plus"></span>ფილიალის დამატება
   </button>
-
-  
 </section>
