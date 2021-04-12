@@ -1,1 +1,26 @@
+<kendo-grid
+  class="grid-kendo"
+  [kendoGridBinding]="gridBranchData"
+  [pageable]="true"
+  [pageSize]="2"
+  [height]="175"
+  scrollable="none"
+>
+  <kendo-grid-column title="მისამართი" field="address" [width]="80">
+  </kendo-grid-column>
 
+  <kendo-grid-column title="მენეჯერი" field="manager_name" [width]="100">
+  </kendo-grid-column>
+
+  <kendo-grid-column title="მოქმედებები" field="actions" [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <!-- <kendo-dropdownbutton
+        [data]="showOptions"
+        (itemClick)="onItemClick($event, dataItem)"
+      >
+        <span class="k-icon k-i-eye"></span>
+        ნახვა
+      </kendo-dropdownbutton> -->
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
