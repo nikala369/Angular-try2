@@ -58,6 +58,7 @@ export class InstitutionFormComponent implements OnInit {
       this.showEdit = true;
     } else if (state == 'show') {
       let id = this.route.snapshot.params.id;
+      this.institutionId = id;
       this.institutionFormTemplate.value;
 
       this.institutionService.institutionSubject.subscribe((data: any) => {
@@ -69,7 +70,6 @@ export class InstitutionFormComponent implements OnInit {
           this.institutionFormTemplate.get('name')?.setValue(data.name);
           this.institutionFormTemplate.get('number')?.setValue(data.number);
           this.intitutionName = data.name;
-          this.institutionId = data.id;
         }
       });
       this.showCreate = false;

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InstitutionComponent } from './page/institution/institution.component';
 import { AuthGuard } from '../sidebar/guard/sidebar.guard';
 import { InstitutionFormComponent } from './components/institution-form/institution-form.component';
+import { CreateComponent } from './modules/branch/components/create/create.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'institutions/:state', component: InstitutionFormComponent },
   { path: 'institutions/:id/:state', component: InstitutionFormComponent },
   { path: 'institutions/:id/:state', component: InstitutionFormComponent },
+
+  { path: 'institutions/:id/branches/create', component: CreateComponent },
 ];
 
 @NgModule({
