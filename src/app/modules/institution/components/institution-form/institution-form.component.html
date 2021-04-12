@@ -1,8 +1,9 @@
 <section class="institution-form">
-  <form
-    [formGroup]="institutionFormTemplate"
-    novalidate
-  >
+  <h1 *ngIf="showCreate">დაწესებულების შექმნა</h1>
+  <h1 *ngIf="!showEdit">დაწესებულების რედაქტირება</h1>
+  <h1 *ngIf="show">დაწესებულება: {{ intitutionName }}</h1>
+
+  <form [formGroup]="institutionFormTemplate" novalidate>
     <label
       >საიდენტიფიკაციო
       <input
@@ -28,10 +29,46 @@
       <input
         class="form-control number-field"
         name="mobile"
-        type="number"
+        type="text"
         formControlName="number"
         required
       />
     </label>
   </form>
+
+  <div *ngIf="showCreate">
+    <button
+      class="btn btn-primary large create-button"
+      (click)="onCreate()"
+      type="submit"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შექმნა
+    </button>
+  </div>
+
+  <div *ngIf="!showEdit">
+    <button
+      class="btn btn-primary large create-button"
+      type="submit"
+      (click)="onEdit()"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შენახვა
+    </button>
+  </div>
+</section>
+
+<section *ngIf="show">
+  <h2>ფილიალები</h2>
+
+  <button
+    class="btn btn-primary large create-button"
+    type="button"
+    (click)="(sendToBranchAdd)"
+  >
+    <span class="k-icon k-i-plus"></span>ფილიალის დამატება
+  </button>
+
+  
 </section>

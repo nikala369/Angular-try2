@@ -1,6 +1,4 @@
 import { Router } from '@angular/router';
-// import { DataService } from './../../../../Services/data.service';
-// import { EventService } from '../../../../Services/event.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,8 +19,6 @@ export class InstitutionComponent implements OnInit {
   public showOptions: Array<string> = ['რედაქტირება', 'ნახვა'];
 
   constructor(
-    // public eventsService: EventService,
-    // public dataService: DataService,
     public institutionService: InstitutionService,
     public router: Router
   ) {
@@ -64,18 +60,18 @@ export class InstitutionComponent implements OnInit {
   }
 
   createInstitution() {
-    this.router.navigate(['/institutions/create']);
+    this.router.navigate(['/institutions', 'create']);
   }
 
   onItemClick(item: any, dataItem: any) {
     if (item === 'რედაქტირება') {
       console.log(item, dataItem);
-      this.institutionService.branchSubject.next(dataItem);
+      this.institutionService.institutionSubject.next(dataItem);
       this.router.navigate(['/institutions', dataItem.id, 'edit']);
     } else if (item === 'ნახვა') {
       console.log(item, dataItem);
-      this.institutionService.branchSubject.next(dataItem);
-      this.router.navigate(['/institutions', dataItem.id]);
+      this.institutionService.institutionSubject.next(dataItem);
+      this.router.navigate(['/institutions', dataItem.id, 'show']);
     }
   }
 }

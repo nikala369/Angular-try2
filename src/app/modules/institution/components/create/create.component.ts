@@ -18,29 +18,9 @@ export class CreateComponent implements OnInit {
   institutionFormData: any;
 
   ngOnInit(): void {
-    this.institutionService.formShare.subscribe((formValue) => {
-      console.log(formValue);
-      this.institutionFormData = formValue;
-    });
+    
   }
 
-  onSubmit() {
-    this.institutionService
-      .createInstitution(this.institutionFormData)
-      .subscribe(
-        (data: any) => {
-          this.router.navigate(['/institutions']);
-          this.createInstitutions = data;
-          console.log(data);
-        },
-        (err: { status: number }) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status === 401) {
-              console.log(err);
-            }
-          }
-        }
-      );
-  }
+  
 }
 

@@ -3,11 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
-import {
-  GetInstitutions,
-  SearchInstitutions,
-  CreateInstitution,
-} from './institutions-interface';
+import { GetInstitutions, SearchInstitutions } from './institutions-interface';
 import { throwError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -15,14 +11,14 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class InstitutionService {
-  public branchSubject = new BehaviorSubject({});
+  public institutionSubject = new BehaviorSubject({});
 
-  public formShare = new BehaviorSubject({});
-  sharedForm = this.formShare.asObservable();
+  // public formShare = new BehaviorSubject({});
+  // sharedForm = this.formShare.asObservable();
 
-  institutionFormData(formValue: {}) {
-    this.formShare.next(formValue);
-  }
+  // institutionFormData(formValue: {}) {
+  //   this.formShare.next(formValue);
+  // }
 
   constructor(private https: HttpClient) {}
 
@@ -44,15 +40,8 @@ export class InstitutionService {
       .pipe(catchError(this.errorHandler));
   }
 
-  createInstitution(userData: CreateInstitution[]) {
-    return this.https.post<CreateInstitution[]>(
-      `${mainUrl}/institutions/create`,
-      userData
-    );
-  }
-
-  getUserById() {
-    
+  createInstitution(userData: any) {
+    return this.https.post<any>(`${mainUrl}/institutions/create`, userData);
   }
 
   errorHandler(error: HttpErrorResponse) {

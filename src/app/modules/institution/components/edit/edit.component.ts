@@ -11,13 +11,8 @@ export class EditComponent implements OnInit {
   form: any;
   constructor(institutionService: InstitutionService) {}
 
-  async ngOnInit(): Promise<void> {
-    const userData = await this.institutionService.getUserById(/*some id*/);
-    this.form.patchValue(userData);
-
-    this.institutionService.formShare.subscribe((formValue: any) => {
-      console.log(formValue);
-      this.institutionService = formValue;
-    });
+  ngOnInit() {
   }
+
+  saveButton() {}
 }

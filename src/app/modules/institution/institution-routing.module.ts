@@ -4,9 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { InstitutionComponent } from './page/institution/institution.component';
 import { AuthGuard } from '../sidebar/guard/sidebar.guard';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
-import { ShowComponent } from './components/show/show.component';
+import { InstitutionFormComponent } from './components/institution-form/institution-form.component';
 
 const routes: Routes = [
   {
@@ -14,9 +12,9 @@ const routes: Routes = [
     component: InstitutionComponent,
     canActivate: [AuthGuard],
   },
-  { path: 'institutions/create', component: CreateComponent },
-  { path: 'institutions/:id/edit', component: EditComponent },
-  { path: 'institutions/:id', component: ShowComponent },
+  { path: 'institutions/:state', component: InstitutionFormComponent },
+  { path: 'institutions/:id/:state', component: InstitutionFormComponent },
+  { path: 'institutions/:id/:state', component: InstitutionFormComponent },
 ];
 
 @NgModule({

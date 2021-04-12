@@ -7,7 +7,14 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    GridModule,
+    IconModule,
+    DropDownsModule,
+  ],
   exports: [
     CommonModule,
     ReactiveFormsModule,

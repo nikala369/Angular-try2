@@ -15,27 +15,6 @@ const routes: Routes = [
         (inst) => inst.InstitutionModule
       ),
   },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./modules/institution/institution.module').then(
-        (inst) => inst.InstitutionModule
-      ),
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./modules/institution/institution.module').then(
-        (inst) => inst.InstitutionModule
-      ),
-  },
-  {
-    path: '',
-    loadChildren: () =>
-      import('./modules/institution/institution.module').then(
-        (inst) => inst.InstitutionModule
-      ),
-  },
 
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] }, // temporary
   // {path: '**', component: PageNotFound}
