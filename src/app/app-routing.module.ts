@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { AuthGuard } from './modules/sidebar/guard/sidebar.guard';
 import { UserComponent } from './modules/user/page/user/user.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,7 +17,7 @@ const routes: Routes = [
   },
 
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] }, // temporary
-  // {path: '**', component: PageNotFound}
+  { path: '**', component: PagenotfoundComponent },
 ];
 
 @NgModule({

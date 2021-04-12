@@ -17,6 +17,7 @@ import { AuthGuard } from './modules/sidebar/guard/sidebar.guard';
 import { TokenInterceptorService } from './modules/auth/services/token-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './modules/sidebar/sidebar.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SidebarComponent } from './modules/sidebar/sidebar.component';
     SidebarComponent,
     LoginComponent,
     InstitutionComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
