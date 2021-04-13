@@ -1,3 +1,6 @@
+LOGIN MAIL = admin@cheishvili.ge 
+PASSWORD = dsdgm31990
+
 # AngularTask2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
