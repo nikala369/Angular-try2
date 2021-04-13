@@ -2,7 +2,6 @@
 @import "~@progress/kendo-theme-default/scss/panelbar/_index.scss";
 .institution {
   margin-top: 50px;
-  margin-left: 30px;
 
   header {
     font-size: 20px;
@@ -11,7 +10,7 @@
 
   .institution-form {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
     margin-bottom: 80px;

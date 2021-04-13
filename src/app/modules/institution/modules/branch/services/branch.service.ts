@@ -9,7 +9,7 @@ import { mainUrl } from 'src/environments/environment';
 export class BranchService {
   constructor(private https: HttpClient) {}
 
-  getBranches(): Observable<any> {
-    return this.https.get<any>(`${mainUrl}/institutions/1/branches`);
+  getBranches(id: any): Observable<any> {
+    return this.https.get<any>(`${mainUrl}/institutions/${id}/branches`);
   }
 }

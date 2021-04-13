@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService } from '../../modules/branch/services/branch.service';
 import { InstitutionService } from '../../services/institution.service';
 
@@ -11,18 +11,22 @@ import { InstitutionService } from '../../services/institution.service';
 })
 export class ShowComponent implements OnInit {
   public gridBranchData: any[] = [];
+  institutionId: any;
 
   public showOptions: Array<string> = ['ნახვა', 'რედაქტირება'];
 
   constructor(
     public institutionService: InstitutionService,
     public branchService: BranchService,
-    public router: Router
+    public router: Router,
+    public route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.branchService.getBranches().subscribe(
-      (data: any) => {
+    let id = this.route.snapshot.params.id;
+    this.institutionId = id;
+    this.branchService.getBranches(id).subscribe(
+      (data) => {
         console.log(data);
         this.gridBranchData = data.data;
       },
@@ -40,11 +44,23 @@ export class ShowComponent implements OnInit {
     if (item === 'რედაქტირება') {
       console.log(item, dataItem);
       this.institutionService.institutionSubject.next(dataItem);
-      this.router.navigate(['/institutions', dataItem.id, 'edit']);
+      this.router.navigate([
+        '/institutions',
+        this.institutionId,
+        'branches',
+        dataItem.id,
+        'edit',
+      ]);
     } else if (item === 'ნახვა') {
       console.log(item, dataItem);
       this.institutionService.institutionSubject.next(dataItem);
-      this.router.navigate(['/institutions', dataItem.id, 'show']);
+      this.router.navigate([
+        '/institutions',
+        this.institutionId,
+        'branches',
+        dataItem.id,
+        'show',
+      ]);
     }
   }
 }

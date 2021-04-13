@@ -13,7 +13,6 @@ import { InstitutionComponent } from './modules/institution/page/institution/ins
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { AuthGuard } from './modules/sidebar/guard/sidebar.guard';
 import { TokenInterceptorService } from './modules/auth/services/token-interceptor.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './modules/sidebar/sidebar.component';
@@ -32,8 +31,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     BrowserModule,
     AppRoutingModule,
     IconsModule,
-    BrowserAnimationsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     GridModule,
     ButtonsModule,
     DropDownsModule,
@@ -41,7 +40,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ReactiveFormsModule,
   ],
   providers: [
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
