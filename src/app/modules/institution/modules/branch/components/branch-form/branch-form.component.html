@@ -1,41 +1,27 @@
 <section class="branch-form">
-  <h1 *ngIf="showCreate">
-    დაწესებულება: {{ institutionName }} - ფილიალის შექმნა
-  </h1>
-  <h1 *ngIf="!showEdit">
-    დაწესებულება: {{ intitutionName }} - ფილიალის რედაქტირება
-  </h1>
+  <h1 *ngIf="showCreate">დაწესებულება: {{ instName }} - ფილიალის შექმნა</h1>
+  <h1 *ngIf="!showEdit">დაწესებულება: {{ instName }} - ფილიალის რედაქტირება</h1>
   <h1 *ngIf="show">დაწესებულება: {{ intitutionName }} - ფილიალის ნახვა</h1>
 
   <form [formGroup]="branchFormTemplate" novalidate>
     <fieldset [disabled]="isDisabled">
       <label
-        >საიდენტიფიკაციო
+        >მისამართი*
         <input
           class="form-control inst-input-type"
-          formControlName="identification"
+          formControlName="address"
           type="text"
-          name="identificationCreate"
+          name="address"
           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
         />
       </label>
 
       <label
-        >დასახელება*
+        >მენეჯერის სახელი*
         <input
           class="form-control inst-input-type"
-          name="institutionName"
+          name="manager_name"
           formControlName="name"
-          required
-        />
-      </label>
-      <label
-        >საკონტაქტო ნომერი*
-        <input
-          class="form-control number-field"
-          name="mobile"
-          type="text"
-          formControlName="number"
           required
         />
       </label>
@@ -73,7 +59,7 @@
     type="button"
     (click)="sendToPersonAdd()"
   >
-    <span class="k-icon k-i-plus"></span>ფილიალის დამატება
+    <span class="k-icon k-i-plus"></span>პერსონალის დამატება
   </button>
 
   <!-- <app-show></app-show> -->

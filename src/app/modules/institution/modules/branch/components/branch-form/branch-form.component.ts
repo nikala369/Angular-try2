@@ -24,6 +24,7 @@ export class BranchFormComponent implements OnInit {
   showEdit: boolean = false;
   show: boolean = false;
   isDisabled: boolean = false;
+  instName: any;
 
   constructor(
     public institutionService: InstitutionService,
@@ -50,9 +51,11 @@ export class BranchFormComponent implements OnInit {
       });
       this.showEdit;
       this.showCreate;
+      this.instName = this.intitutionName;
     } else if (state == 'create') {
       this.showCreate = true;
       this.showEdit = true;
+      this.instName = this.intitutionName;
     } else if (state == 'show') {
       let id = this.route.snapshot.params.id;
       this.institutionId = id;

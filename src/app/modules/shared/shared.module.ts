@@ -11,7 +11,6 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
     GridModule,
     IconModule,
     DropDownsModule,

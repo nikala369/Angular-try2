@@ -8,7 +8,7 @@
       <label
         >საიდენტიფიკაციო
         <input
-          class="form-control input-type"
+          class="input-type"
           type="text"
           name="საიდენტიფიკაციო"
           formControlName="identification"
@@ -21,7 +21,7 @@
       <label class="label-space"
         >დასახელება
         <input
-          class="form-control input-type"
+          class="input-type"
           formControlName="name"
           type="text"
           name="დასახელება"
@@ -43,13 +43,9 @@
 <div class="div-line"></div>
 
 <section class="section2">
-  <button
-    class="btn btn-primary large create-button"
-    (click)="createInstitution()"
-    type="button"
-    id="create"
-  >
-    <span class="k-icon k-i-plus"></span>დაწესებულების შექმნა
+  <button class="create-button" type="button" id="create">
+    <span class="k-icon k-i-plus"></span
+    ><a [routerLink]="['create']">დაწესებულების შექმნა </a>
   </button>
 
   <header>
