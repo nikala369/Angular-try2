@@ -59,7 +59,6 @@ export class InstitutionFormComponent implements OnInit {
     } else if (state == 'show') {
       let id = this.route.snapshot.params.id;
       this.institutionId = id;
-      this.institutionFormTemplate.value;
 
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {

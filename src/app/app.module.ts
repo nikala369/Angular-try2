@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { UserComponent } from './modules/user/page/user/user.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { InstitutionComponent } from './modules/institution/page/institution/institution.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
@@ -24,7 +23,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     UserComponent,
     SidebarComponent,
     LoginComponent,
-    InstitutionComponent,
     PagenotfoundComponent,
   ],
   imports: [

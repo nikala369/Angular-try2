@@ -1,1 +1,80 @@
-<p>branch-form works!</p>
+<section class="branch-form">
+  <h1 *ngIf="showCreate">
+    დაწესებულება: {{ institutionName }} - ფილიალის შექმნა
+  </h1>
+  <h1 *ngIf="!showEdit">
+    დაწესებულება: {{ intitutionName }} - ფილიალის რედაქტირება
+  </h1>
+  <h1 *ngIf="show">დაწესებულება: {{ intitutionName }} - ფილიალის ნახვა</h1>
+
+  <form [formGroup]="branchFormTemplate" novalidate>
+    <fieldset [disabled]="isDisabled">
+      <label
+        >საიდენტიფიკაციო
+        <input
+          class="form-control inst-input-type"
+          formControlName="identification"
+          type="text"
+          name="identificationCreate"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+        />
+      </label>
+
+      <label
+        >დასახელება*
+        <input
+          class="form-control inst-input-type"
+          name="institutionName"
+          formControlName="name"
+          required
+        />
+      </label>
+      <label
+        >საკონტაქტო ნომერი*
+        <input
+          class="form-control number-field"
+          name="mobile"
+          type="text"
+          formControlName="number"
+          required
+        />
+      </label>
+    </fieldset>
+  </form>
+
+  <div *ngIf="showCreate">
+    <button
+      class="btn btn-primary large create-button"
+      (click)="onCreate()"
+      type="submit"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შექმნა
+    </button>
+  </div>
+
+  <div *ngIf="!showEdit">
+    <button
+      class="btn btn-primary large create-button"
+      type="submit"
+      (click)="onEdit()"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შენახვა
+    </button>
+  </div>
+</section>
+
+<section *ngIf="show">
+  <h2>ფილიალები</h2>
+
+  <button
+    class="btn btn-primary large create-button"
+    type="button"
+    (click)="sendToPersonAdd()"
+  >
+    <span class="k-icon k-i-plus"></span>ფილიალის დამატება
+  </button>
+
+  <!-- <app-show></app-show> -->
+</section>
