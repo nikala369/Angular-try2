@@ -22,8 +22,7 @@ export class ShowComponent implements OnInit {
   ngOnInit() {
     let id = this.route.snapshot.params.isntitutionsId;
     this.institutionId = id;
-    debugger;
-    this.institutionService.getOneInst().subscribe(
+    this.institutionService.getOneInst(this.institutionId).subscribe(
       (data: any) => {
         console.log(data);
         this.gridPersonData = data.personal;

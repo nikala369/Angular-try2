@@ -4,15 +4,12 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { PersonalServ } from './branches-interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BranchService {
-  branchId!: number;
+  branchServiceId!: number;
   institutionsId!: number;
 
   constructor(private https: HttpClient, public route: ActivatedRoute) {}
@@ -30,6 +27,17 @@ export class BranchService {
     return this.https.post<any>(
       `${mainUrl}/institutions/${this.institutionsId}/branches/create`,
       branchData
+    );
+  }
+
+  updateBranch(
+    branchUpdate: any,
+    branchId: any,
+    institutionId: any
+  ): Observable<any> {
+    return this.https.put<any>(
+      `${mainUrl}/institutions/${institutionId}/branches/${branchId}`,
+      branchUpdate
     );
   }
 }

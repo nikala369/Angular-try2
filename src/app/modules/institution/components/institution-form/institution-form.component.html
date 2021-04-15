@@ -9,9 +9,9 @@
         >საიდენტიფიკაციო
         <input
           class="form-control inst-input-type"
-          formControlName="identification"
+          formControlName="pid"
           type="text"
-          name="identificationCreate"
+          name="pid"
           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
         />
       </label>
@@ -20,7 +20,7 @@
         >დასახელება*
         <input
           class="form-control inst-input-type"
-          name="institutionName"
+          name="name"
           formControlName="name"
           required
         />
@@ -29,7 +29,7 @@
         >საკონტაქტო ნომერი*
         <input
           class="form-control number-field"
-          name="mobile"
+          name="number"
           type="text"
           formControlName="number"
           required

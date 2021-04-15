@@ -19,7 +19,7 @@ export class InstitutionFormComponent implements OnInit {
   institutionFormTemplate: FormGroup;
   createInstitutions: any;
   intitutionName: any;
-  institutionId!: number;
+  institutionId: any;
 
   showCreate: boolean = false;
   showEdit: boolean = false;
@@ -34,9 +34,9 @@ export class InstitutionFormComponent implements OnInit {
     public branchService: BranchService
   ) {
     this.institutionFormTemplate = new FormGroup({
-      identification: new FormControl(''),
-      name: new FormControl('', Validators.required),
       number: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      pid: new FormControl(''),
     });
   }
 
@@ -46,11 +46,9 @@ export class InstitutionFormComponent implements OnInit {
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
-          this.institutionFormTemplate
-            .get('identification')
-            ?.patchValue(data.pid);
-          this.institutionFormTemplate.get('name')?.patchValue(data.name);
           this.institutionFormTemplate.get('number')?.patchValue(data.number);
+          this.institutionFormTemplate.get('name')?.patchValue(data.name);
+          this.institutionFormTemplate.get('pid')?.patchValue(data.pid);
         }
       });
       this.showEdit;
@@ -65,11 +63,9 @@ export class InstitutionFormComponent implements OnInit {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
           this.institutionFormTemplate.disabled;
-          this.institutionFormTemplate
-            .get('identification')
-            ?.setValue(data.pid);
-          this.institutionFormTemplate.get('name')?.setValue(data.name);
           this.institutionFormTemplate.get('number')?.setValue(data.number);
+          this.institutionFormTemplate.get('name')?.setValue(data.name);
+          this.institutionFormTemplate.get('pid')?.setValue(data.pid);
           this.intitutionName = data.name;
         }
       });
@@ -103,8 +99,22 @@ export class InstitutionFormComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.institutionFormTemplate.value);
-    this.router.navigate(['/institutions']);
+    let idIn = this.route.snapshot.params.id;
+    this.institutionService
+      .updateInstitution(this.institutionFormTemplate.value, idIn)
+      .subscribe(
+        (data: any) => {
+          console.log(this.institutionFormTemplate.value);
+          this.router.navigate(['/institutions']);
+        },
+        (err: { status: number }) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              console.log(err);
+            }
+          }
+        }
+      );
   }
 
   sendToBranchAdd() {

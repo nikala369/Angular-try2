@@ -16,6 +16,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class InstitutionService {
   public institutionSubject = new BehaviorSubject({});
+  institutionId: any;
 
   // public formShare = new BehaviorSubject({});
   // sharedForm = this.formShare.asObservable();
@@ -44,14 +45,26 @@ export class InstitutionService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getOneInst() {
-    return this.https.get<any>(`${mainUrl}/institutions/1`);
+  getOneInst(id: any) {
+    this.institutionId = id;
+    return this.https.get<any>(`${mainUrl}/institutions/${id}`);
   }
 
   createInstitution(userData: CreateInstitution[]) {
     return this.https.post<CreateInstitution[]>(
       `${mainUrl}/institutions/create`,
       userData
+    );
+  }
+
+  updateInstitution(
+    institutionUpdate: any,
+    institutionId: any
+  ): Observable<any> {
+    console.log(institutionId)
+    return this.https.put<any>(
+      `${mainUrl}/institutions/${institutionId}`,
+      institutionUpdate
     );
   }
 

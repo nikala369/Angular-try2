@@ -116,7 +116,18 @@ export class BranchFormComponent implements OnInit {
 
   onEdit() {
     console.log(this.branchFormTemplate.value);
-    // this.router.navigate(['/institutions']);
+    this.branchService.updateBranch(this.branchFormTemplate.value, this.branchId, this.instId).subscribe(
+      (data: any) => {
+        console.log(this.branchFormTemplate.value);
+      },
+      (err: { status: number }) => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) {
+            console.log(err);
+          }
+        }
+      }
+    );
   }
 
   sendToPersonAdd() {
