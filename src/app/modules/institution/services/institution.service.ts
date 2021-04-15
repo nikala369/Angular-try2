@@ -44,6 +44,10 @@ export class InstitutionService {
       .pipe(catchError(this.errorHandler));
   }
 
+  getOneInst() {
+    return this.https.get<any>(`${mainUrl}/institutions/1`);
+  }
+
   createInstitution(userData: CreateInstitution[]) {
     return this.https.post<CreateInstitution[]>(
       `${mainUrl}/institutions/create`,

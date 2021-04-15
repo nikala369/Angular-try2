@@ -4,6 +4,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { PersonalServ } from './branches-interface';
 
 @Injectable({
   providedIn: 'root',

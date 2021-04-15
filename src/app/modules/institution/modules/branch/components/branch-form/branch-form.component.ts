@@ -17,7 +17,7 @@ import { BranchService } from '../../services/branch.service';
 })
 export class BranchFormComponent implements OnInit {
   branchFormTemplate: FormGroup;
-  institutionName: any;
+  institutionName!: string;
   branchId!: number;
   instId!: number;
 
@@ -47,12 +47,10 @@ export class BranchFormComponent implements OnInit {
     let id2 = this.route.snapshot.params.institutionsId;
     this.branchId = id;
     this.instId = id2;
-    debugger;
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
           this.institutionName = data.name;
-          debugger;
         }
       });
 
@@ -69,7 +67,6 @@ export class BranchFormComponent implements OnInit {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
           this.institutionName = data.name;
-          debugger;
         }
       });
 
@@ -78,7 +75,6 @@ export class BranchFormComponent implements OnInit {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
           this.institutionName = data.name;
-          debugger;
         }
       });
 
@@ -98,12 +94,6 @@ export class BranchFormComponent implements OnInit {
     } else {
       console.log('oops');
     }
-
-    this.institutionService.institutionSubject.subscribe((data: any) => {
-      if (Object.keys(data).length > 0) {
-        debugger;
-      }
-    });
   }
 
   onCreate() {

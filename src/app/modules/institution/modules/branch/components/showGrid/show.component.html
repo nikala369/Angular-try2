@@ -1,1 +1,21 @@
-<p>show works!</p>
+<kendo-grid
+class="grid-kendo"
+[kendoGridBinding]="gridPersonal"
+[pageable]="true"
+[pageSize]="2"
+[height]="175"
+scrollable="none"
+>
+<kendo-grid-column title="პირადი ნომერი" field="pid" [width]="80">
+</kendo-grid-column>
+
+<kendo-grid-column title="სახელი" field="name" [width]="100">
+</kendo-grid-column>
+
+<kendo-grid-column title="მოქმედებები" field="" [width]="70">
+  <ng-template kendoGridCellTemplate>
+    <kendo-dropdownlist class="edit-box" [data]="showEdit" value="ნახვა">
+    </kendo-dropdownlist>
+  </ng-template>
+</kendo-grid-column>
+</kendo-grid>
