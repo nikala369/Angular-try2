@@ -17,8 +17,7 @@ import { BranchService } from '../../services/branch.service';
 })
 export class BranchFormComponent implements OnInit {
   branchFormTemplate: FormGroup;
-  createInstitutions: any;
-  intitutionName: any;
+  institutionName: any;
   branchId!: number;
   instId!: number;
 
@@ -26,7 +25,6 @@ export class BranchFormComponent implements OnInit {
   showEdit: boolean = false;
   show: boolean = false;
   isDisabled: boolean = false;
-  instName: any;
   createBranch: any;
 
   constructor(
@@ -45,7 +43,19 @@ export class BranchFormComponent implements OnInit {
   ngOnInit(): void {
     let state = this.route.snapshot.params.state;
 
+    let id = this.route.snapshot.params.branchId;
+    let id2 = this.route.snapshot.params.institutionsId;
+    this.branchId = id;
+    this.instId = id2;
+    debugger;
     if (state == 'edit') {
+      this.institutionService.institutionSubject.subscribe((data: any) => {
+        if (Object.keys(data).length > 0) {
+          this.institutionName = data.name;
+          debugger;
+        }
+      });
+
       this.branchService.branchSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
           this.branchFormTemplate.get('address')?.patchValue(data.address);
@@ -56,11 +66,21 @@ export class BranchFormComponent implements OnInit {
       });
       this.showEdit = true;
     } else if (state == 'create') {
-      // this.branchService.branchSubject.subscribe(data => this.instName);
+      this.institutionService.institutionSubject.subscribe((data: any) => {
+        if (Object.keys(data).length > 0) {
+          this.institutionName = data.name;
+          debugger;
+        }
+      });
+
       this.showCreate = true;
     } else if (state == 'show') {
-      let id = this.route.snapshot.params.id;
-      this.branchId = id;
+      this.institutionService.institutionSubject.subscribe((data: any) => {
+        if (Object.keys(data).length > 0) {
+          this.institutionName = data.name;
+          debugger;
+        }
+      });
 
       this.branchService.branchSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
@@ -70,8 +90,6 @@ export class BranchFormComponent implements OnInit {
             .get('manager_name')
             ?.setValue(data.manager_name);
         }
-
-        this.instId = data.institution_id;
       });
       this.showCreate = false;
       this.showEdit = false;
@@ -83,7 +101,7 @@ export class BranchFormComponent implements OnInit {
 
     this.institutionService.institutionSubject.subscribe((data: any) => {
       if (Object.keys(data).length > 0) {
-        this.intitutionName = data.name;
+        debugger;
       }
     });
   }

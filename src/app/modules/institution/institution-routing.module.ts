@@ -19,11 +19,11 @@ const routes: Routes = [
 
   { path: 'institutions/:id/branches/:state', component: BranchFormComponent },
   {
-    path: 'institutions/:id/branches/:id/:state',
+    path: 'institutions/:institutionsId/branches/:branchId/:state',
     component: BranchFormComponent,
   },
   {
-    path: 'institutions/:id/branches/:id/:state',
+    path: 'institutions/:isntitutionsId/branches/:branchId/:state',
     component: BranchFormComponent,
   },
 ];
