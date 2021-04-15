@@ -1,7 +1,7 @@
 <section class="branch-form">
   <h1 *ngIf="showCreate">დაწესებულება: {{ instName }} - ფილიალის შექმნა</h1>
-  <h1 *ngIf="!showEdit">დაწესებულება: {{ instName }} - ფილიალის რედაქტირება</h1>
-  <h1 *ngIf="show">დაწესებულება: {{ intitutionName }} - ფილიალის ნახვა</h1>
+  <h1 *ngIf="showEdit">დაწესებულება: {{ instName }} - ფილიალის რედაქტირება</h1>
+  <h1 *ngIf="show">დაწესებულება: {{ instName }} - ფილიალის ნახვა</h1>
 
   <form [formGroup]="branchFormTemplate" novalidate>
     <fieldset [disabled]="isDisabled">
@@ -9,10 +9,10 @@
         >მისამართი*
         <input
           class="form-control inst-input-type"
-          formControlName="address"
           type="text"
+          formControlName="address"
           name="address"
-          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+          required
         />
       </label>
 
@@ -20,8 +20,9 @@
         >მენეჯერის სახელი*
         <input
           class="form-control inst-input-type"
+          type="text"
+          formControlName="manager_name"
           name="manager_name"
-          formControlName="name"
           required
         />
       </label>
@@ -39,7 +40,7 @@
     </button>
   </div>
 
-  <div *ngIf="!showEdit">
+  <div *ngIf="showEdit">
     <button
       class="btn btn-primary large create-button"
       type="submit"

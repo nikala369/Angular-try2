@@ -2,7 +2,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BranchService } from '../../modules/branch/services/branch.service';
-import { InstitutionService } from '../../services/institution.service';
 
 @Component({
   selector: 'app-show',
@@ -16,7 +15,6 @@ export class ShowComponent implements OnInit {
   public showOptions: Array<string> = ['ნახვა', 'რედაქტირება'];
 
   constructor(
-    public institutionService: InstitutionService,
     public branchService: BranchService,
     public router: Router,
     public route: ActivatedRoute
@@ -43,7 +41,7 @@ export class ShowComponent implements OnInit {
   onItemClick(item: any, dataItem: any) {
     if (item === 'რედაქტირება') {
       console.log(item, dataItem);
-      this.institutionService.institutionSubject.next(dataItem);
+      this.branchService.branchSubject.next(dataItem);
       this.router.navigate([
         '/institutions',
         this.institutionId,
@@ -53,7 +51,7 @@ export class ShowComponent implements OnInit {
       ]);
     } else if (item === 'ნახვა') {
       console.log(item, dataItem);
-      this.institutionService.institutionSubject.next(dataItem);
+      this.branchService.branchSubject.next(dataItem);
       this.router.navigate([
         '/institutions',
         this.institutionId,

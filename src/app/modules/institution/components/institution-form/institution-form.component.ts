@@ -8,6 +8,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BranchService } from '../../modules/branch/services/branch.service';
 
 @Component({
   selector: 'app-institution-form',
@@ -29,7 +30,8 @@ export class InstitutionFormComponent implements OnInit {
     public formBuilder: FormBuilder,
     public institutionService: InstitutionService,
     public router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public branchService: BranchService
   ) {
     this.institutionFormTemplate = new FormGroup({
       identification: new FormControl(''),
@@ -106,6 +108,7 @@ export class InstitutionFormComponent implements OnInit {
   }
 
   sendToBranchAdd() {
+    // this.branchService.branchSubject.next(this.intitutionName);
     this.router.navigate([
       '/institutions',
       this.institutionId,
