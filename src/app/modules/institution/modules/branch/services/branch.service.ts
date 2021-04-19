@@ -40,4 +40,10 @@ export class BranchService {
       branchUpdate
     );
   }
+
+  getPerson(instId: any, branchId: any): Observable<any> {
+    return this.https.get<any>(
+      `${mainUrl}/institutions/${instId}/branches/${branchId}/personal`
+    );
+  }
 }

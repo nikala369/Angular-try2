@@ -21,6 +21,7 @@ export class ShowComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    debugger
     let id = this.route.snapshot.params.id;
     this.institutionId = id;
     this.branchService.getBranches(id).subscribe(

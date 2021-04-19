@@ -47,6 +47,8 @@ export class BranchFormComponent implements OnInit {
     let id2 = this.route.snapshot.params.institutionsId;
     this.branchId = id;
     this.instId = id2;
+
+    debugger;
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
@@ -102,7 +104,6 @@ export class BranchFormComponent implements OnInit {
         console.log(this.branchFormTemplate.value);
         this.router.navigate(['/institutions']);
         this.createBranch = data;
-        console.log(data);
       },
       (err: { status: number }) => {
         if (err instanceof HttpErrorResponse) {
@@ -116,18 +117,20 @@ export class BranchFormComponent implements OnInit {
 
   onEdit() {
     console.log(this.branchFormTemplate.value);
-    this.branchService.updateBranch(this.branchFormTemplate.value, this.branchId, this.instId).subscribe(
-      (data: any) => {
-        console.log(this.branchFormTemplate.value);
-      },
-      (err: { status: number }) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) {
-            console.log(err);
+    this.branchService
+      .updateBranch(this.branchFormTemplate.value, this.branchId, this.instId)
+      .subscribe(
+        (data: any) => {
+          console.log(this.branchFormTemplate.value);
+        },
+        (err: { status: number }) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              console.log(err);
+            }
           }
         }
-      }
-    );
+      );
   }
 
   sendToPersonAdd() {

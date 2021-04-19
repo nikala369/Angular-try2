@@ -1,6 +1,10 @@
 <section class="branch-form">
-  <h1 *ngIf="showCreate">დაწესებულება: {{ institutionName }} - ფილიალის შექმნა</h1>
-  <h1 *ngIf="showEdit">დაწესებულება: {{ institutionName }} - ფილიალის რედაქტირება</h1>
+  <h1 *ngIf="showCreate">
+    დაწესებულება: {{ institutionName }} - ფილიალის შექმნა
+  </h1>
+  <h1 *ngIf="showEdit">
+    დაწესებულება: {{ institutionName }} - ფილიალის რედაქტირება
+  </h1>
   <h1 *ngIf="show">დაწესებულება: {{ institutionName }} - ფილიალის ნახვა</h1>
 
   <form [formGroup]="branchFormTemplate" novalidate>

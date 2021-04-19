@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InstitutionService } from 'src/app/modules/institution/services/institution.service';
 import { BranchService } from '../../services/branch.service';
 
@@ -11,21 +11,28 @@ import { BranchService } from '../../services/branch.service';
 })
 export class ShowComponent implements OnInit {
   gridPersonData: any;
+
+  public showOptions: Array<string> = ['ნახვა', 'რედაქტირება'];
+
   institutionId: any;
+  branchId: any;
 
   constructor(
     public route: ActivatedRoute,
     public branchService: BranchService,
+    public router: Router,
     public institutionService: InstitutionService
   ) {}
 
   ngOnInit() {
-    let id = this.route.snapshot.params.isntitutionsId;
-    this.institutionId = id;
-    this.institutionService.getOneInst(this.institutionId).subscribe(
+    let idInstitution = this.route.snapshot.params.isntitutionsId;
+    let idBranch = this.route.snapshot.params.branchId;
+    this.branchId = idBranch;
+    this.institutionId = idInstitution;
+    this.branchService.getPerson(this.institutionId, this.branchId).subscribe(
       (data: any) => {
-        console.log(data);
-        this.gridPersonData = data.personal;
+        this.gridPersonData = data;
+        debugger;
       },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
