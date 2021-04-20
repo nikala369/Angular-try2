@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { mainUrl } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class BranchService {
   branchServiceId!: number;
   institutionsId!: number;
 
-  constructor(private https: HttpClient, public route: ActivatedRoute) {}
+  constructor(private https: HttpClient) {}
 
   public branchSubject = new BehaviorSubject({});
 
@@ -41,9 +40,10 @@ export class BranchService {
     );
   }
 
-  getPerson(instId: any, branchId: any): Observable<any> {
+  getPerson(institutionId: any, branchId: any): Observable<any> {
+    debugger;
     return this.https.get<any>(
-      `${mainUrl}/institutions/${instId}/branches/${branchId}/personal`
+      `${mainUrl}/institutions/${institutionId}/branches/${branchId}/personal`
     );
   }
 }

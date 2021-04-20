@@ -16,6 +16,22 @@ const routes: Routes = [
       ),
   },
 
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/institution/modules/branch/branch.module').then(
+        (branch) => branch.BranchModule
+      ),
+  },
+
+  {
+    path: '',
+    loadChildren: () =>
+      import(
+        './modules/institution/modules/branch/modules/personal/personal.module'
+      ).then((personal) => personal.PersonalModule),
+  },
+
   { path: 'users', component: UserComponent, canActivate: [AuthGuard] }, // temporary
   { path: '**', component: PagenotfoundComponent },
 ];

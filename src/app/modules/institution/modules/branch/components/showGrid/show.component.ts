@@ -25,14 +25,14 @@ export class ShowComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let idInstitution = this.route.snapshot.params.isntitutionsId;
+    let institution = this.route.snapshot.params.isntitutionsId;
     let idBranch = this.route.snapshot.params.branchId;
     this.branchId = idBranch;
-    this.institutionId = idInstitution;
-    this.branchService.getPerson(this.institutionId, this.branchId).subscribe(
+    this.institutionId = institution;
+    this.branchService.getPerson(institution, idBranch).subscribe(
       (data: any) => {
         this.gridPersonData = data;
-        debugger;
+        console.log(data);
       },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
@@ -42,5 +42,33 @@ export class ShowComponent implements OnInit {
         }
       }
     );
+  }
+
+  onItemClick(item: any, dataItem: any) {
+    if (item === 'რედაქტირება') {
+      console.log(item, dataItem);
+      this.branchService.branchSubject.next(dataItem);
+      this.router.navigate([
+        '/institutions',
+        this.institutionId,
+        'branches',
+        this.branchId,
+        'personal',
+        dataItem.id,
+        'edit',
+      ]);
+    } else if (item === 'ნახვა') {
+      console.log(item, dataItem);
+      this.branchService.branchSubject.next(dataItem);
+      this.router.navigate([
+        '/institutions',
+        this.institutionId,
+        'branches',
+        this.branchId,
+        'personal',
+        dataItem.id,
+        'show',
+      ]);
+    }
   }
 }

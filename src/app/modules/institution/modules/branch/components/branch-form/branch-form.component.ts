@@ -48,7 +48,6 @@ export class BranchFormComponent implements OnInit {
     this.branchId = id;
     this.instId = id2;
 
-    debugger;
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {

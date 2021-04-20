@@ -1,1 +1,57 @@
-<p>personal-form works!</p>
+<section class="personal-form">
+  <h1 *ngIf="showCreate">
+    დაწესებულება: {{ institutionName }} - ფილიალის შექმნა
+  </h1>
+  <h1 *ngIf="showEdit">
+    დაწესებულება: {{ institutionName }} - ფილიალის რედაქტირება
+  </h1>
+  <h1 *ngIf="show">დაწესებულება: {{ institutionName }} - ფილიალის ნახვა</h1>
+
+  <form [formGroup]="personalFormTemplate" novalidate>
+    <fieldset [disabled]="isDisabled">
+      <label
+        >პირადი ნომერი*
+        <input
+          class="form-control inst-input-type"
+          type="text"
+          formControlName="pid"
+          name="pid"
+          required
+        />
+      </label>
+
+      <label
+        >სახელი*
+        <input
+          class="form-control inst-input-type"
+          type="text"
+          formControlName="name"
+          name="name"
+          required
+        />
+      </label>
+    </fieldset>
+  </form>
+
+  <div *ngIf="showCreate">
+    <button
+      class="btn btn-primary large create-button"
+      (click)="onCreate()"
+      type="submit"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შექმნა
+    </button>
+  </div>
+
+  <div *ngIf="showEdit">
+    <button
+      class="btn btn-primary large create-button"
+      type="submit"
+      (click)="onEdit()"
+      id="create-inst"
+    >
+      <span class="k-icon k-i-plus"></span> შენახვა
+    </button>
+  </div>
+</section>
