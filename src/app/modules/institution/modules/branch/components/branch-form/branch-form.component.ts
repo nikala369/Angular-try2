@@ -100,7 +100,6 @@ export class BranchFormComponent implements OnInit {
   onCreate() {
     this.branchService.createBranch(this.branchFormTemplate.value).subscribe(
       (data: any) => {
-        console.log(this.branchFormTemplate.value);
         this.router.navigate(['/institutions']);
         this.createBranch = data;
       },
@@ -115,7 +114,6 @@ export class BranchFormComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.branchFormTemplate.value);
     this.branchService
       .updateBranch(this.branchFormTemplate.value, this.branchId, this.instId)
       .subscribe(

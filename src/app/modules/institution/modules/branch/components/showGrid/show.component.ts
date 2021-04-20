@@ -33,7 +33,6 @@ export class ShowComponent implements OnInit {
     this.branchService.getPerson(this.institutionsId, this.branchId).subscribe(
       (data: any) => {
         this.gridPersonData = data.data;
-        console.log('person', data.data);
       },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {

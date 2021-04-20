@@ -38,8 +38,8 @@ export class PersonalFormComponent implements OnInit {
     public institutionService: InstitutionService
   ) {
     this.personalFormTemplate = new FormGroup({
-      pid: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),
+      pid: new FormControl(''),
     });
   }
 
@@ -50,8 +50,6 @@ export class PersonalFormComponent implements OnInit {
     this.branchId = searchId.branchId;
     this.instId = searchId.institutionsId;
     this.personId = searchId.personId;
-
-    debugger;
 
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
@@ -124,12 +122,11 @@ export class PersonalFormComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.personalFormTemplate.value);
     this.personalService
       .updatePersonal(
         this.personalFormTemplate.value,
-        this.branchId,
         this.instId,
+        this.branchId,
         this.personId
       )
       .subscribe(
