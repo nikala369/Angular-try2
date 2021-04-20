@@ -25,7 +25,10 @@ export class PersonalFormComponent implements OnInit {
   showEdit: boolean = false;
   show: boolean = false;
   isDisabled: boolean = false;
+
   createBranch: any;
+  personalName: any;
+  personId: any;
 
   constructor(
     public personalService: PersonalService,
@@ -42,15 +45,18 @@ export class PersonalFormComponent implements OnInit {
 
   ngOnInit(): void {
     let state = this.route.snapshot.params.state;
+    let searchId = this.route.snapshot.params;
 
-    let id = this.route.snapshot.params.branchId;
-    let id2 = this.route.snapshot.params.institutionsId;
-    this.branchId = id;
-    this.instId = id2;
+    this.branchId = searchId.branchId;
+    this.instId = searchId.institutionsId;
+    this.personId = searchId.personId;
+
+    debugger;
 
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
+          debugger;
           this.institutionName = data.name;
         }
       });
@@ -59,6 +65,7 @@ export class PersonalFormComponent implements OnInit {
         if (Object.keys(data).length > 0) {
           this.personalFormTemplate.get('pid')?.patchValue(data.pid);
           this.personalFormTemplate.get('name')?.patchValue(data.name);
+          this.personalName = data.name;
         }
       });
       this.showEdit = true;
@@ -82,6 +89,8 @@ export class PersonalFormComponent implements OnInit {
           this.personalFormTemplate.disabled;
           this.personalFormTemplate.get('pid')?.setValue(data.pid);
           this.personalFormTemplate.get('name')?.setValue(data.name);
+
+          this.personalName = data.name;
         }
       });
       this.showCreate = false;
@@ -116,23 +125,24 @@ export class PersonalFormComponent implements OnInit {
 
   onEdit() {
     console.log(this.personalFormTemplate.value);
-    // this.personalService
-    //   .updatePersonal(
-    //     this.personalFormTemplate.value,
-    //     this.branchId,
-    //     this.instId
-    //   )
-    //   .subscribe(
-    //     (data: any) => {
-    //       console.log(this.personalFormTemplate.value);
-    //     },
-    //     (err: { status: number }) => {
-    //       if (err instanceof HttpErrorResponse) {
-    //         if (err.status === 401) {
-    //           console.log(err);
-    //         }
-    //       }
-    //     }
-    //   );
+    this.personalService
+      .updatePersonal(
+        this.personalFormTemplate.value,
+        this.branchId,
+        this.instId,
+        this.personId
+      )
+      .subscribe(
+        (data: any) => {
+          console.log(this.personalFormTemplate.value);
+        },
+        (err: { status: number }) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              console.log(err);
+            }
+          }
+        }
+      );
   }
 }

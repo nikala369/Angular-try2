@@ -1,11 +1,13 @@
 <section class="personal-form">
   <h1 *ngIf="showCreate">
-    დაწესებულება: {{ institutionName }} - ფილიალის შექმნა
+    დაწესებულება: {{ institutionName }} - პერსონალის შექმნა
   </h1>
   <h1 *ngIf="showEdit">
-    დაწესებულება: {{ institutionName }} - ფილიალის რედაქტირება
+    დაწესებულება: {{ institutionName }} - პერსონალი: {{ personalName }}
   </h1>
-  <h1 *ngIf="show">დაწესებულება: {{ institutionName }} - ფილიალის ნახვა</h1>
+  <h1 *ngIf="show">
+    დაწესებულება: {{ institutionName }} - პერსონალი: {{ personalName }}
+  </h1>
 
   <form [formGroup]="personalFormTemplate" novalidate>
     <fieldset [disabled]="isDisabled">

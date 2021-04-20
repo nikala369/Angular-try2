@@ -21,4 +21,16 @@ export class PersonalService {
       personalData
     );
   }
+
+  updatePersonal(
+    personalUpdate: any,
+    institutionId: any,
+    branchId: any,
+    personId: any
+  ): Observable<any> {
+    return this.https.put<any>(
+      `${mainUrl}/institutions/${institutionId}/branches/${branchId}/personal/${personId}`,
+      personalUpdate
+    );
+  }
 }
