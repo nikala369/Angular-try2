@@ -54,7 +54,6 @@ export class PersonalFormComponent implements OnInit {
     if (state == 'edit') {
       this.institutionService.institutionSubject.subscribe((data: any) => {
         if (Object.keys(data).length > 0) {
-          debugger;
           this.institutionName = data.name;
         }
       });
