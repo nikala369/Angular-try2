@@ -14,7 +14,7 @@ export class ShowComponent implements OnInit {
 
   public showOptions: Array<string> = ['ნახვა', 'რედაქტირება'];
 
-  institutionId: any;
+  institutionsId: any;
   branchId: any;
 
   constructor(
@@ -25,14 +25,13 @@ export class ShowComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    let institution = this.route.snapshot.params.isntitutionsId;
-    let idBranch = this.route.snapshot.params.branchId;
-    this.branchId = idBranch;
-    this.institutionId = institution;
-    this.branchService.getPerson(institution, idBranch).subscribe(
+    this.institutionsId = this.route.snapshot.params.institutionsId;
+    this.branchId = this.route.snapshot.params.branchId;
+
+    this.branchService.getPerson(this.institutionsId, this.branchId).subscribe(
       (data: any) => {
-        this.gridPersonData = data;
-        console.log(data);
+        this.gridPersonData = data.data;
+        console.log('person', data.data);
       },
       (err: any) => {
         if (err instanceof HttpErrorResponse) {
@@ -50,7 +49,7 @@ export class ShowComponent implements OnInit {
       this.branchService.branchSubject.next(dataItem);
       this.router.navigate([
         '/institutions',
-        this.institutionId,
+        this.institutionsId,
         'branches',
         this.branchId,
         'personal',
@@ -62,7 +61,7 @@ export class ShowComponent implements OnInit {
       this.branchService.branchSubject.next(dataItem);
       this.router.navigate([
         '/institutions',
-        this.institutionId,
+        this.institutionsId,
         'branches',
         this.branchId,
         'personal',

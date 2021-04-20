@@ -18,10 +18,12 @@ const routes: Routes = [
   { path: 'institutions/:id/:state', component: InstitutionFormComponent },
 
   { path: 'institutions/:id/branches/:state', component: BranchFormComponent },
+
   {
     path: 'institutions/:institutionsId/branches/:branchId/:state',
     component: BranchFormComponent,
   },
+  
   {
     path: 'institutions/:isntitutionsId/branches/:branchId/:state',
     component: BranchFormComponent,

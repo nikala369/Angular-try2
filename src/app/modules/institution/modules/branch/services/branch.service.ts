@@ -41,7 +41,6 @@ export class BranchService {
   }
 
   getPerson(institutionId: any, branchId: any): Observable<any> {
-    debugger;
     return this.https.get<any>(
       `${mainUrl}/institutions/${institutionId}/branches/${branchId}/personal`
     );
